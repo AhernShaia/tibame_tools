@@ -6,6 +6,7 @@ load_dotenv()
 # Azure speech
 # Azure Speech Service 金鑰
 SPEECH_KEY = os.getenv('AZURE_SPEECH_KEY')
+SPEECH_ZONE = os.getenv('AZURE_SPEECH_ZONE')
 # 語音風格
 STYLE = 'affectionate'
 # 語音資源庫
@@ -32,7 +33,7 @@ def get_voice(text: str):
             </voice>
         </speak>"""
     response = requests.post(
-        'https://eastus.tts.speech.microsoft.com/cognitiveservices/v1', headers=headers, data=body.encode('utf-8'))
+        f'https://{SPEECH_ZONE}.tts.speech.microsoft.com/cognitiveservices/v1', headers=headers, data=body.encode('utf-8'))
     print("response status:",   response)
     if response.status_code == 200:
         # 2. 將語音保存到文件
@@ -46,4 +47,4 @@ def get_voice(text: str):
         print(response.headers)
 
 
-print(SPEECH_KEY)
+get_voice('我是一個機器人，我會說話。')
