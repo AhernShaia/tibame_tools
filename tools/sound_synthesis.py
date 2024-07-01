@@ -21,10 +21,10 @@ print(f'聲音文件已成功合成並保存到 {output_file}')
 os.makedirs('uploads', exist_ok=True)
 input_image = '/uploads/Data.jpg'
 
-# 使用 ffmpeg 將聲音與圖片合成為影片
+
 output_video = 'new_video.mp4'
 try:
-    # 使用 ffmpeg 将音频与图片合成为视频
+   # 使用 ffmpeg 將聲音與圖片合成為影片
     (
         ffmpeg
         .input(input_image, framerate=1)  # 图片的 frame rate
@@ -37,6 +37,6 @@ try:
         })
         .run()
     )
-    print(f'影片文件已成功合成并保存到 {output_video}')
+    print(f'影片文件已成功合成並保存到 {output_video}')
 except ffmpeg.Error as e:
     print(e.stderr.decode('utf8'))
